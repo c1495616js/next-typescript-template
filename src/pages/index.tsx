@@ -1,62 +1,37 @@
+import Image from 'next/image'
 import * as React from 'react';
 
+import { Blob } from '@/components/Atoms'
 import Layout from '@/components/layout/Layout';
-import ArrowLink from '@/components/links/ArrowLink';
-import ButtonLink from '@/components/links/ButtonLink';
-import CustomLink from '@/components/links/CustomLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+import avatar from '../../public/images/the-avatar.png'
+
 
 export default function HomePage() {
   return (
-    <Layout>
-      {/* <Seo templateTitle='Home' /> */}
-      <Seo />
+    <div className="flex flex-col-reverse items-center mt-12 lg:flex-row lg:justify-between lg:space-x-6">
+    <p className="max-w-3xl mt-12 text-3xl font-semibold lg:mt-0 sm:text-4xl sm:text-left md:text-center lg:text-left">
+      Hi, I’m Jeff. I’m an experienced game developer with deep interest in
+      modern web development.
+    </p>
+    <div className="relative">
+      <Blob />
+      <div className="absolute top-0 flex items-center justify-center w-full h-full">
+        <div className="w-32 h-32 overflow-hidden rounded-full md:h-40 md:w-40 lg:h-48 lg:w-48">
+          <Image
+            src={avatar}
+            alt="My avatar"
+            width={256}
+            height={256}
+            quality={100}
+            priority={true}
+            placeholder="blur"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <main>
-        <section className='bg-white'>
-          <div className='layout flex flex-col justify-center items-center min-h-screen text-center'>
-            <h1>Next.js + Tailwind CSS + TypeScript Starter</h1>
-            <p className='mt-2 text-sm text-gray-800'>
-              A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
-              Import, Seo, Link component, pre-configured with Husky{' '}
-            </p>
-            <p className='mt-2 text-sm text-gray-700'>
-              <ArrowLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter'>
-                See the repository
-              </ArrowLink>
-            </p>
-
-            <ButtonLink className='mt-6' href='/components' variant='light'>
-              See all components
-            </ButtonLink>
-
-            <UnstyledLink
-              href='https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter'
-              className='mt-4'
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                width='92'
-                height='32'
-                src='https://vercel.com/button'
-                alt='Deploy with Vercel'
-              />
-            </UnstyledLink>
-
-            <footer className='absolute bottom-2 text-gray-700'>
-              © {new Date().getFullYear()} By{' '}
-              <CustomLink href='https://theodorusclarence.com?ref=tsnextstarter'>
-                Theodorus Clarence
-              </CustomLink>
-            </footer>
-          </div>
-        </section>
-      </main>
-    </Layout>
   );
 }

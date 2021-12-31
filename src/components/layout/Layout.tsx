@@ -4,6 +4,9 @@ import BaseDialog from '@/components/dialog/BaseDialog';
 
 import useDialogStore from '@/store/useDialogStore';
 
+import { Footer } from './Footer';
+import { Header } from './Header';
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   //#region  //*=========== STORE ===========
   const open = useDialogStore.useOpen();
@@ -13,14 +16,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   //#endregion  //*======== STORE ===========
 
   return (
-    <div>
-      {children}
-      <BaseDialog
+    <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="container flex-grow max-w-screen-lg px-5 m-auto mt-16 sm:px-12 md:px-20">
+          {children}
+        </main>
+        <Footer />
+        <BaseDialog
         onClose={handleClose}
         onSubmit={handleSubmit}
         open={open}
         options={state}
       />
-    </div>
+      </div>
+
+    
   );
 }

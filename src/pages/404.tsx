@@ -1,29 +1,23 @@
-import * as React from 'react';
-import { RiAlarmWarningFill } from 'react-icons/ri';
+import { Fragment } from 'react'
 
-import Layout from '@/components/layout/Layout';
-import ArrowLink from '@/components/links/ArrowLink';
-import Seo from '@/components/Seo';
+import { Blob } from '../components/Atoms'
 
-export default function NotFoundPage() {
+function NotFoundPage() {
   return (
-    <Layout>
-      <Seo templateTitle='Not Found' />
-
-      <main>
-        <section className='bg-white'>
-          <div className='layout flex flex-col justify-center items-center min-h-screen text-center text-black'>
-            <RiAlarmWarningFill
-              size={60}
-              className='animate-flicker drop-shadow-glow text-red-500'
-            />
-            <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>
-            <ArrowLink className='mt-4 md:text-lg' href='/'>
-              Back to Home
-            </ArrowLink>
-          </div>
-        </section>
-      </main>
-    </Layout>
-  );
+    <Fragment>
+      <div className="flex justify-center">
+        <div className="absolute">
+          <Blob />
+        </div>
+        <h1 className="mx-auto mt-16 text-6xl font-bold text-center md:mt-20 lg:mt-24 text-back-primary">
+          404
+        </h1>
+      </div>
+      <p className="mt-24 text-2xl font-medium text-center lg:mt-36 text-fore-secondary">
+        Page not found. The page you’re looking for does not exist.
+      </p>
+    </Fragment>
+  )
 }
+
+export default NotFoundPage
